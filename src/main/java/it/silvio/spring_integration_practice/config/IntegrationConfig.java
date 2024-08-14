@@ -15,7 +15,6 @@ public class IntegrationConfig {
         return new DirectChannel();
     }
 
-
     @Bean
     @ServiceActivator(inputChannel = "discountedOrderChannel")
     public MessageHandler orderHandler() {
@@ -23,4 +22,6 @@ public class IntegrationConfig {
             System.out.println("Elaborazione ordine: " + message.getPayload());
         };
     }
+
+    // Test Commit Vs Code
 }
