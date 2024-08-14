@@ -15,8 +15,20 @@ public class OrderController {
 
     @PostMapping("/orders")
     public String placeOrder(@RequestBody Order order) {
-        orderGateway.placeOrder(order);
-        return "Ordine ricevuto e in elaborazione";
+        String responseMessage = "Ordine ricevuto e in elaborazione";
+        String errorMessage = "Errore nel riconoscimento della priorità dell'ordine";
+
+        switch (order.getPriority()) {
+            case HIGH:
+                orderGateway.placeHighPriorityOrder(order);
+                break;
+            case MEDIUM:
+                orderGateway.placeMediumPriorityOrder(order);
+                break;
+            default:
+                return errorMessage;
+        }
+        return responseMessage;
     }
-    
+
 }

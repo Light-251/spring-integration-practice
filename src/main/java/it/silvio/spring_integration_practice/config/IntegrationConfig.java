@@ -44,6 +44,4 @@ public class IntegrationConfig {
             System.out.println("Elaborazione ordine: " + message.getPayload());
         };
     }
-
-    // Test Commit Vs Code
 }
